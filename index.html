@@ -268,12 +268,21 @@
       saveBtn.style.display = 'inline-block'; editBtn.style.display = 'none';
     }
   }
+  const MEMO_NAMES = {'1':'① 콘텐츠 캘린더','2':'② 콘텐츠 샘플','ref':'📌 참고·데일리 질문','3':'③ 크리에이티브 가이드','etc':'기타'};
   function memoSave(btn){
     const box = btn.closest('.memobox');
-    localStorage.setItem('sofinity_memo_' + box.dataset.memo, box.querySelector('textarea').value);
+    const key = box.dataset.memo;
+    const text = box.querySelector('textarea').value;
+    localStorage.setItem('sofinity_memo_' + key, text);
     const st = box.querySelector('.mstatus');
     st.textContent = '저장됨 ✓'; setTimeout(()=>{ st.textContent=''; }, 2000);
     renderBox(box);
+    if (text.trim()) {
+      fetch('https://sofinity-memo-notify.lloeybb.workers.dev', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ section: MEMO_NAMES[key] || key, text }),
+      }).then(()=>{ st.textContent = '저장됨 ✓ · 알림 전송'; setTimeout(()=>{ st.textContent=''; }, 2500); }).catch(()=>{});
+    }
   }
   function memoEdit(btn){
     const box = btn.closest('.memobox');
