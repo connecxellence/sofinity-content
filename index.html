@@ -14,7 +14,15 @@
     background:var(--bg);color:var(--ink);line-height:1.7;padding:30px 18px 90px}
   .wrap{max-width:840px;margin:0 auto}
   h1{font-size:24px;font-weight:800;letter-spacing:-.5px}
+  .head{display:flex;align-items:center;gap:14px}
+  .logo{width:54px;height:54px;flex:none}
   .lead{color:var(--soft);font-size:14px;margin-top:6px}
+  .stat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin:8px 0}
+  .stat{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:12px 8px;text-align:center}
+  .stat b{display:block;font-size:21px;font-weight:800;color:var(--sky-deep);line-height:1.25}
+  .stat span{font-size:11px;color:var(--soft)}
+  .goalbox{background:#eef6fb;border:1px solid var(--sky-deep);border-radius:12px;padding:14px 18px;font-size:15px;margin-bottom:4px}
+  .goalbox b{color:var(--sky-deep)}
   h2{font-size:17px;font-weight:700;margin:34px 0 12px;display:flex;align-items:center;gap:8px}
   h2 .n{background:var(--sky-deep);color:#fff;width:24px;height:24px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:13px;flex:none}
   .card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:18px 20px;margin-bottom:12px}
@@ -66,14 +74,29 @@
 <body>
 <div class="wrap">
 
-  <h1>🐾 소피니티 콘텐츠 가이드</h1>
-  <p class="lead">@sofinity_official · 인스타그램 운영 가이드 · 기획: 별, 진웅 · 2026.06</p>
+  <div class="head">
+    <img src="logo.svg" alt="소피니티" class="logo">
+    <div>
+      <h1>소피니티 콘텐츠 가이드</h1>
+      <p class="lead">@sofinity_official · 인스타그램 운영 가이드 · 기획: 별, 진웅 · 2026.06</p>
+    </div>
+  </div>
 
   <div class="oneline" style="margin-top:16px">
     매일 한 질문에 답하며 반려친구를 기록하는 앱 <b>소피니티</b>의 공식 인스타 계정입니다.<br>
     콘텐츠 필러 <b>2개</b> → <span class="tag a">A</span> UGC(보호자 답변) 재가공 / <span class="tag b">B</span> 반려생활 인사이트.<br>
     브랜드 톤 = <b>차분하고 따뜻한 미니멀</b> (전체 무드 유지).
   </div>
+
+  <h2><span class="n">📊</span> 인스타 현황 &amp; 목표</h2>
+  <div class="stat-grid">
+    <div class="stat"><b>4,007</b><span>7일 조회<br>(노출)</span></div>
+    <div class="stat"><b>89.5%</b><span>신규 도달<br>(비팔로워)</span></div>
+    <div class="stat"><b>143</b><span>인게이지먼트</span></div>
+    <div class="stat"><b>~3.6%</b><span>인게이지먼트율</span></div>
+    <div class="stat"><b>71</b><span>팔로워</span></div>
+  </div>
+  <div class="goalbox">🎯 <b>핵심 KPI</b> — 팔로워 → 인앱 유저 전환률 <b>90% 이상</b></div>
 
   <h2><span class="n">1</span> 콘텐츠 캘린더 (주간)</h2>
   <table>
