@@ -43,6 +43,14 @@
   textarea{width:100%;min-height:78px;border:1px dashed var(--sky-deep);border-radius:10px;padding:11px 14px;font-family:inherit;font-size:14px;line-height:1.7;resize:vertical;background:#fffdf8}
   .memo-label{display:block;font-size:13px;font-weight:700;color:var(--ink);margin:14px 0 5px}
   .memo-label:first-of-type{margin-top:0}
+  .memobox{margin:10px 0 2px;background:#fffdf8;border:1px dashed var(--sky-deep);border-radius:10px;padding:10px 13px}
+  .memobox .mlabel{font-size:12px;font-weight:700;color:var(--sky-deep);margin-bottom:6px}
+  .memobox textarea{min-height:58px;border:1px solid var(--line);background:#fff;margin-bottom:7px}
+  .memobox .saved{font-size:13.5px;color:#3a4a54;white-space:pre-wrap;line-height:1.6;padding:2px 1px 6px}
+  .memobox .saved:empty{display:none}
+  .memo-actions{display:flex;gap:8px;align-items:center}
+  .btn.ghost{background:#fff;color:var(--sky-deep);border:1px solid var(--sky-deep)}
+  .mstatus{font-size:12px;color:var(--soft)}
   .memo-bar{display:flex;gap:10px;align-items:center;margin-top:8px;font-size:13px;color:var(--soft)}
   .btn{background:var(--sky-deep);color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer}
   details{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:4px 18px;margin-top:14px}
@@ -82,6 +90,17 @@
   </table>
   <p class="pool">+ <b>스토리는 데일리</b> — 당일 질문·신규 게시물 리그램 (리텐션).<br>
   <span class="hold">※ 현재 A(UGC) 준비 중 → 우선 B(인사이트) 주 2~3회로 운영 시작.</span></p>
+
+  <div class="memobox" data-memo="1">
+    <div class="mlabel">📝 이 항목 메모</div>
+    <div class="saved"></div>
+    <textarea placeholder="요일·포맷·발행 빈도 관련 메모"></textarea>
+    <div class="memo-actions">
+      <button class="btn save-btn" onclick="memoSave(this)">저장</button>
+      <button class="btn ghost edit-btn" onclick="memoEdit(this)">수정</button>
+      <span class="mstatus"></span>
+    </div>
+  </div>
 
   <h2><span class="n">2</span> 콘텐츠 샘플</h2>
 
@@ -125,6 +144,17 @@
 
   <p class="pool"><b>B 콘텐츠 백로그:</b> 분리불안 진실 / 강아지 나이 ×7은 틀렸다 / 여름 아스팔트 5초룰 / 카밍 시그널 / 이름 자주 부르면 안 되는 이유 / 간식 타이밍</p>
 
+  <div class="memobox" data-memo="2">
+    <div class="mlabel">📝 이 항목 메모</div>
+    <div class="saved"></div>
+    <textarea placeholder="후크·구성·주제 관련 메모"></textarea>
+    <div class="memo-actions">
+      <button class="btn save-btn" onclick="memoSave(this)">저장</button>
+      <button class="btn ghost edit-btn" onclick="memoEdit(this)">수정</button>
+      <span class="mstatus"></span>
+    </div>
+  </div>
+
   <h2><span class="n">📌</span> 참고 · 챕터 2 데일리 질문 (Day 1~11)</h2>
   <div class="card">
     <p style="font-size:13.5px;color:var(--soft);margin-bottom:10px">시리즈 <span class="tag a">A</span>(UGC)는 아래 데일리 질문에 대한 보호자 답변을 재가공합니다. 챕터 2 = 'Day 1~88 · 하루 한 질문 · 함께 자란 시간' 흐름. (<code>{이름}</code> = 반려친구 이름, 앱에서 치환)</p>
@@ -146,6 +176,17 @@
     </table>
   </div>
 
+  <div class="memobox" data-memo="ref">
+    <div class="mlabel">📝 이 항목 메모</div>
+    <div class="saved"></div>
+    <textarea placeholder="질문 관련 메모"></textarea>
+    <div class="memo-actions">
+      <button class="btn save-btn" onclick="memoSave(this)">저장</button>
+      <button class="btn ghost edit-btn" onclick="memoEdit(this)">수정</button>
+      <span class="mstatus"></span>
+    </div>
+  </div>
+
   <h2><span class="n">3</span> 크리에이티브 가이드라인</h2>
   <div class="card">
     <ul class="tone">
@@ -156,21 +197,26 @@
     </ul>
   </div>
 
-  <h2 class="memo"><span class="n">📝</span> 메모 (항목별 수정·전달사항)</h2>
-  <div class="card">
-    <label class="memo-label">① 콘텐츠 캘린더</label>
-    <textarea data-memo="1" placeholder="요일·포맷·발행 빈도 관련 메모"></textarea>
-    <label class="memo-label">② 콘텐츠 샘플</label>
-    <textarea data-memo="2" placeholder="후크·구성·주제 관련 메모"></textarea>
-    <label class="memo-label">📌 참고 · 데일리 질문</label>
-    <textarea data-memo="ref" placeholder="질문 관련 메모"></textarea>
-    <label class="memo-label">③ 크리에이티브 가이드라인</label>
-    <textarea data-memo="3" placeholder="비주얼·톤 관련 메모"></textarea>
-    <label class="memo-label">기타 · 총평</label>
-    <textarea data-memo="etc" placeholder="전체 의견"></textarea>
-    <div class="memo-bar">
-      <button class="btn" onclick="saveMemo()">전체 저장</button>
-      <span id="status"></span>
+  <div class="memobox" data-memo="3">
+    <div class="mlabel">📝 이 항목 메모</div>
+    <div class="saved"></div>
+    <textarea placeholder="비주얼·톤 관련 메모"></textarea>
+    <div class="memo-actions">
+      <button class="btn save-btn" onclick="memoSave(this)">저장</button>
+      <button class="btn ghost edit-btn" onclick="memoEdit(this)">수정</button>
+      <span class="mstatus"></span>
+    </div>
+  </div>
+
+  <h2 class="memo"><span class="n">📝</span> 기타 · 총평</h2>
+  <div class="memobox" data-memo="etc">
+    <div class="mlabel">📝 전체 의견</div>
+    <div class="saved"></div>
+    <textarea placeholder="전체 의견·총평"></textarea>
+    <div class="memo-actions">
+      <button class="btn save-btn" onclick="memoSave(this)">저장</button>
+      <button class="btn ghost edit-btn" onclick="memoEdit(this)">수정</button>
+      <span class="mstatus"></span>
     </div>
   </div>
 
@@ -179,16 +225,39 @@
 </div>
 
 <script>
-  const st = document.getElementById('status');
-  const areas = document.querySelectorAll('textarea[data-memo]');
-  areas.forEach(a=>{ a.value = localStorage.getItem('sofinity_memo_'+a.dataset.memo) || ''; });
-  function saveMemo(){
-    areas.forEach(a=> localStorage.setItem('sofinity_memo_'+a.dataset.memo, a.value));
-    st.textContent = '저장됨 ✓';
-    setTimeout(()=>{st.textContent='';}, 2000);
+  function renderBox(box){
+    const key = 'sofinity_memo_' + box.dataset.memo;
+    const val = localStorage.getItem(key) || '';
+    const saved = box.querySelector('.saved');
+    const ta = box.querySelector('textarea');
+    const saveBtn = box.querySelector('.save-btn');
+    const editBtn = box.querySelector('.edit-btn');
+    saved.textContent = val;
+    ta.value = val;
+    if (val) {                       // 저장됨 → 읽기 모드
+      saved.style.display = 'block'; ta.style.display = 'none';
+      saveBtn.style.display = 'none'; editBtn.style.display = 'inline-block';
+    } else {                         // 비어있음 → 편집 모드
+      saved.style.display = 'none'; ta.style.display = 'block';
+      saveBtn.style.display = 'inline-block'; editBtn.style.display = 'none';
+    }
   }
-  let t;
-  areas.forEach(a=> a.addEventListener('input', ()=>{ clearTimeout(t); t=setTimeout(saveMemo, 1200); }));
+  function memoSave(btn){
+    const box = btn.closest('.memobox');
+    localStorage.setItem('sofinity_memo_' + box.dataset.memo, box.querySelector('textarea').value);
+    const st = box.querySelector('.mstatus');
+    st.textContent = '저장됨 ✓'; setTimeout(()=>{ st.textContent=''; }, 2000);
+    renderBox(box);
+  }
+  function memoEdit(btn){
+    const box = btn.closest('.memobox');
+    box.querySelector('.saved').style.display = 'none';
+    const ta = box.querySelector('textarea');
+    ta.style.display = 'block'; ta.focus();
+    box.querySelector('.save-btn').style.display = 'inline-block';
+    btn.style.display = 'none';
+  }
+  document.querySelectorAll('.memobox').forEach(renderBox);
 </script>
 </body>
 </html>
